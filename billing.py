@@ -9,9 +9,14 @@ class CustomerProfile:
 
 # 2) Ліквідація Stamp Coupling: передаються лише примітивні параметри (city та weight_kg)
 def calculate_delivery_cost(city: str, weight_kg: float) -> float:
-    base_rate = 50.0 if city == "Ivano-Frankivsk" else 110.0
+def calculate_delivery_cost(city: str, weight_kg: float) -> float:
+    if city == "Ivano-Frankivsk":
+        base_rate = 50.0
+    elif city == "Kyiv":
+        base_rate = 80.0
+    else:
+        base_rate = 110.0
     return base_rate + (weight_kg * 15.0)
-
 
 # 1) Ліквідація Common Coupling: tax_rate передається як аргумент зі значенням за замовчуванням 0.20
 # 3) Ліквідація Control Coupling: окрема функція для звичайного розрахунку замість mode_flag
